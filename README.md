@@ -169,9 +169,21 @@ Then as we get closer to the deadline, we will focus on integration. Here, both 
 
 ### Last week's progress
 
+Last week, we ordered parts (are are still waiting on them to become available in Detkin lab). We also started work on the IoT component of our project, which uses an ESP32-S2 feather. We also wrote up a more detailed firmware/hardware plan (what pins will be used for what) based on the revised set of parts we used when ordering.
+
 ### Current state of project
 
+Currently, we have the parts we need, and a few components started. The next steps are to begin testing the parts we recieved (especially the force resistors) and get started with integration.
+
 ### Next week's plan
+
+Goals:
+- Have I2C driver that can talk to another I2C device (e.g., an IMU) without any device-specific logic
+- Create a blynk setup that can turn mocked signals from the MCU into charts/graphs
+  - this should use the same pins we plan to communicate the data via once we integrate the actual hardware
+- A rough version of the main loop our code will be running with. We will write this and test it with the sensors.
+
+Out of these 3, both Saanvi and Aagam will work on the first, Aagam will work on the second, and Saanvi will work on the third.
 
 ## Sprint Review #2
 
