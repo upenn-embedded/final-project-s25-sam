@@ -1,4 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/WXeqVgks)
+
 # final-project-skeleton
 
 * Team Number: 16
@@ -15,11 +16,11 @@ SlouchBuster is a device to help detect and correct poor posture.  It’s a cush
 
 ### 2. Motivation
 
-In today’s digital age, where long hours are spent sitting at desks, on devices, and on couches, poor posture has become an increasingly prevalent issue. Many suffer from back and neck pain, headaches,  poor circulation, and other musculoskeletal problems due to improper sitting and slouching habits. However, poor posture often goes unnoticed and it can be hard to be aware of posture throughout the day. This can lead to chronic discomfort, decreased productivity, and long term health issues. 
+In today’s digital age, where long hours are spent sitting at desks, on devices, and on couches, poor posture has become an increasingly prevalent issue. Many suffer from back and neck pain, headaches,  poor circulation, and other musculoskeletal problems due to improper sitting and slouching habits. However, poor posture often goes unnoticed and it can be hard to be aware of posture throughout the day. This can lead to chronic discomfort, decreased productivity, and long term health issues.
 
-The purpose of our project is to create a posture detection device that helps users maintain proper sitting posture by providing real-time feedback and alerts when poor posture is detected. We also aim to make our device user friendly and to give users the opportunity to track their progress over time. 
+The purpose of our project is to create a posture detection device that helps users maintain proper sitting posture by providing real-time feedback and alerts when poor posture is detected. We also aim to make our device user friendly and to give users the opportunity to track their progress over time.
 
-This project is interesting because  it integrates advanced embedded systems techniques to a real and widespread health problem. By using sensors, real-time feedback, and smart features, this posture detection device has the potential to improve users’ quality of lids by helping them be aware of their sitting habits (and hopefully training them to develop better sitting habits). 
+This project is interesting because  it integrates advanced embedded systems techniques to a real and widespread health problem. By using sensors, real-time feedback, and smart features, this posture detection device has the potential to improve users’ quality of lids by helping them be aware of their sitting habits (and hopefully training them to develop better sitting habits).
 
 This project brings together techniques such as power management, noise filtering, and wireless communication, which makes it a challenging and impactful solution. It’s a chance to merge technology with everyday health in a practical way & can help improve daily life.
 
@@ -63,15 +64,15 @@ N/A
 
 **5.2 Functionality**
 
-| ID | Description |
-| :---- | :---- |
-| SRS-01 | The IMU will measure 3-axis acceleration with a sampling rate of 100Hz to capture the user's posture in real-time. This allows for precise tracking of any tilt or slouch in the torso. |
-| SRS-02 | The seat pressure sensors will be sampled every 0.5 seconds to monitor the pressure distribution across the cushion, enabling the system to detect changes in posture or seating position as quickly as they occur. |
-| SRS-03 | The IMU sensing and ultrasonic sensor sensing will only begin when the pressure sensors detect over 10% of maximum pressure applied, indicating the user is seated and their posture is being actively tracked. This reduces unnecessary processing when the user is not in the seated position. |
-| SRS-04 | The Ultrasonic sensor will continuously measure the distance from the user's back to the cushion at a frequency of once every 0.5 seconds, allowing the system to detect how far the user has tilted or slouched. |
-| SRS-05 | The buzzer will only buzz after bad posture was detected for more than 2 minutes. Until the posture isn’t corrected the buzzer won’t stop |
-| SRS-06 | Depending on what factors triggered the event of bad posture, after 2 minutes, the LCD will display a certain message (e.g. sit back, sit straight, stop leaning, etc.) to help the user “detrigger” the buzzer |
-| SRS-07 | Once the seat pressure threshold is passed and sensing begins, the back pressure sensors will be sampled every 0.5 seconds to monitor the pressure distribution across the cushion, enabling the system to detect changes in posture or seating position as quickly as they occur.  |
+| ID     | Description                                                                                                                                                                                                                                                                                                                                     |
+| :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SRS-01 | The IMU will measure 3-axis acceleration with a sampling rate of 100Hz to capture the user's posture in real-time. This allows for precise tracking of any tilt or slouch in the torso.                                                                                                                                                         |
+| SRS-02 | The seat pressure sensors will be sampled every 0.5 seconds to monitor the pressure distribution across the cushion, enabling the system to detect changes in posture or seating position as quickly as they occur.                                                                                                                             |
+| SRS-03 | The IMU sensing and ultrasonic sensor sensing will only begin when the pressure sensors detect over 10% of maximum pressure applied, indicating the user is seated and their posture is being actively tracked. This reduces unnecessary processing when the user is not in the seated position.                                                |
+| SRS-04 | The Ultrasonic sensor will continuously measure the distance from the user's back to the cushion at a frequency of once every 0.5 seconds, allowing the system to detect how far the user has tilted or slouched.                                                                                                                               |
+| SRS-05 | The buzzer will only buzz after bad posture was detected for more than 2 minutes. Until the posture isn’t corrected the buzzer won’t stop                                                                                                                                                                                                     |
+| SRS-06 | Depending on what factors triggered the event of bad posture, after 2 minutes, the LCD will display a certain message (e.g. sit back, sit straight, stop leaning, etc.) to help the user “detrigger” the buzzer                                                                                                                               |
+| SRS-07 | Once the seat pressure threshold is passed and sensing begins, the back pressure sensors will be sampled every 0.5 seconds to monitor the pressure distribution across the cushion, enabling the system to detect changes in posture or seating position as quickly as they occur.                                                              |
 | SRS-07 | The system will log posture data (including the time spent in bad posture and the type of posture detected) for historical tracking. This data will be stored locally on the device and optionally synced to a cloud database via ESP32for long-term tracking. The data can be accessed by the user via the mobile app for progress monitoring. |
 
 ### 6. Hardware Requirements Specification (HRS)
@@ -82,30 +83,39 @@ During validation testing, each sensor's performance will be carefully evaluated
 
 ### Validation Testing for HRS:
 
-1. HRS-01 (IMU):  
-   * Test: Measure the 3-axis acceleration and rotation data at different angles to ensure the IMU correctly detects slouching, tilting, and leaning movements.  
-   * Metric: Check if the IMU can detect posture changes accurately by comparing with known movements (e.g., leaning forward and backward at specific angles) and ensuring it registers changes within 100Hz sampling rate.  
-2. HRS-02 (Pressure Sensors):  
-   * Test: Apply known weights at different positions on the cushion to ensure the pressure sensors provide consistent and accurate readings.  
-   * Metric: Ensure that pressure readings are captured every 200ms and that the sensors can detect pressure within the range of 0.1-10kg.  
-3. HRS-03 (Ultrasonic Sensor):  
-   * Test: Place the user at different distances from the cushion and ensure the sensor detects the back-to-cushion distance accurately within ±1 cm.  
-   * Metric: Ensure that the distance readings from the sensor match the actual distances and that the response time is less than 1 second.  
-4. HRS-04 (Buzzer):  
-   * Test: Test the buzzer for its sound level at different distances and verify that it triggers after 2 minutes of bad posture.  
-   * Metric: The buzzer should reach a sound level of ≥ 70 dB at 1 meter and activate when poor posture is detected.  
-5. HRS-05 (LCD Display):  
-   * Test: Display the corrective posture messages on the LCD and verify visibility and readability under normal lighting conditions.  
-   * Metric: Ensure the LCD resolution is at least 128x64 pixels and that the messages are clearly visible from a normal seated position.  
-6. HRS-06 (Power Supply):  
-   * Test: Measure the current consumption of the device under normal operation and in low-power mode.  
-   * Metric: The device should consume less than 300mA during normal operation and enter low-power modeafter 5 minutes of inactivity.  
-7. HRS-07 (ATmega328PB Microcontroller):  
-   * Test: Verify the microcontroller’s ability to process data from all sensors and provide timely feedback.  
-   * Metric: The microcontroller should process and provide feedback within 1 second of detecting poor posture.  
-8. HRS-08 (ESP32 Wireless Communication):  
-   * Test: Measure the range and reliability of the ESP32 in maintaining a stable Wi-Fi connection.  
-   * Metric: The device should maintain a stable connection within 10 meters and sync data within 5 seconds.  
+1. HRS-01 (IMU):
+
+   * Test: Measure the 3-axis acceleration and rotation data at different angles to ensure the IMU correctly detects slouching, tilting, and leaning movements.
+   * Metric: Check if the IMU can detect posture changes accurately by comparing with known movements (e.g., leaning forward and backward at specific angles) and ensuring it registers changes within 100Hz sampling rate.
+2. HRS-02 (Pressure Sensors):
+
+   * Test: Apply known weights at different positions on the cushion to ensure the pressure sensors provide consistent and accurate readings.
+   * Metric: Ensure that pressure readings are captured every 200ms and that the sensors can detect pressure within the range of 0.1-10kg.
+3. HRS-03 (Ultrasonic Sensor):
+
+   * Test: Place the user at different distances from the cushion and ensure the sensor detects the back-to-cushion distance accurately within ±1 cm.
+   * Metric: Ensure that the distance readings from the sensor match the actual distances and that the response time is less than 1 second.
+4. HRS-04 (Buzzer):
+
+   * Test: Test the buzzer for its sound level at different distances and verify that it triggers after 2 minutes of bad posture.
+   * Metric: The buzzer should reach a sound level of ≥ 70 dB at 1 meter and activate when poor posture is detected.
+5. HRS-05 (LCD Display):
+
+   * Test: Display the corrective posture messages on the LCD and verify visibility and readability under normal lighting conditions.
+   * Metric: Ensure the LCD resolution is at least 128x64 pixels and that the messages are clearly visible from a normal seated position.
+6. HRS-06 (Power Supply):
+
+   * Test: Measure the current consumption of the device under normal operation and in low-power mode.
+   * Metric: The device should consume less than 300mA during normal operation and enter low-power modeafter 5 minutes of inactivity.
+7. HRS-07 (ATmega328PB Microcontroller):
+
+   * Test: Verify the microcontroller’s ability to process data from all sensors and provide timely feedback.
+   * Metric: The microcontroller should process and provide feedback within 1 second of detecting poor posture.
+8. HRS-08 (ESP32 Wireless Communication):
+
+   * Test: Measure the range and reliability of the ESP32 in maintaining a stable Wi-Fi connection.
+   * Metric: The device should maintain a stable connection within 10 meters and sync data within 5 seconds.
+
    2. Create 4 to 8 critical system requirements.
 
 **6.1 Definitions, Abbreviations**
@@ -114,29 +124,29 @@ N/A
 
 **6.2 Functionality**
 
-| ID | Description |
-| :---- | :---- |
-| HRS-01 | The IMU (Inertial Measurement Unit) shall be able to detect and measure the 3-axis acceleration and rotationwith a sampling rate of 100Hz to accurately track the user’s body orientation (e.g., tilting, slouching, or leaning). This ensures the device detects posture changes in real time. |
-| HRS-02 | The pressure sensors embedded in the cushion shall measure pressure at multiple points across the seating surface with a sampling frequency of 200ms to accurately monitor weight distribution and identify improper posture. The system should be able to detect pressure changes in the range of 0.1-10kg. |
-| HRS-03 | The ultrasonic sensor shall measure the distance from the user’s back to the cushion with an accuracy of ±1 cmand a response time of less than 1 second. This sensor will help detect forward slouching or posture misalignment by tracking the user's position relative to the cushion. |
-| HRS-04 | The buzzer shall provide audible feedback with a sound level of ≥ 70 dB at a distance of 1 meter, ensuring it is loud enough to alert the user when poor posture has been detected for more than 2 minutes. It shall be powered using the same power supply as the other components and be activated via the microcontroller. |
-| HRS-05 | The LCD display shall have a resolution of at least 128x64 pixels and shall display posture correction messages, such as "Sit Back" or "Sit Straight," when bad posture is detected. The display shall be powered by the ATmega328PB microcontroller and shall be visible under normal lighting conditions from a seated position. |
-| HRS-06 | The device shall be powered by a 5V DC power supply (preferably rechargeable via a USB-C port). The system shall consume less than 300mA during normal operation to ensure efficient battery life. A low-power mode shall be enabled when no user activity is detected for more than 5 minutes to extend battery life. |
+| ID     | Description                                                                                                                                                                                                                                                                                                                                               |
+| :----- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HRS-01 | The IMU (Inertial Measurement Unit) shall be able to detect and measure the 3-axis acceleration and rotationwith a sampling rate of 100Hz to accurately track the user’s body orientation (e.g., tilting, slouching, or leaning). This ensures the device detects posture changes in real time.                                                          |
+| HRS-02 | The pressure sensors embedded in the cushion shall measure pressure at multiple points across the seating surface with a sampling frequency of 200ms to accurately monitor weight distribution and identify improper posture. The system should be able to detect pressure changes in the range of 0.1-10kg.                                              |
+| HRS-03 | The ultrasonic sensor shall measure the distance from the user’s back to the cushion with an accuracy of ±1 cmand a response time of less than 1 second. This sensor will help detect forward slouching or posture misalignment by tracking the user's position relative to the cushion.                                                                |
+| HRS-04 | The buzzer shall provide audible feedback with a sound level of ≥ 70 dB at a distance of 1 meter, ensuring it is loud enough to alert the user when poor posture has been detected for more than 2 minutes. It shall be powered using the same power supply as the other components and be activated via the microcontroller.                            |
+| HRS-05 | The LCD display shall have a resolution of at least 128x64 pixels and shall display posture correction messages, such as "Sit Back" or "Sit Straight," when bad posture is detected. The display shall be powered by the ATmega328PB microcontroller and shall be visible under normal lighting conditions from a seated position.                        |
+| HRS-06 | The device shall be powered by a 5V DC power supply (preferably rechargeable via a USB-C port). The system shall consume less than 300mA during normal operation to ensure efficient battery life. A low-power mode shall be enabled when no user activity is detected for more than 5 minutes to extend battery life.                                    |
 | HRS-07 | The ATmega328PB microcontroller shall be responsible for processing sensor data (from the IMU, pressure sensors, and ultrasonic sensor) and controlling the feedback mechanisms (buzzer, LCD). The microcontroller shall be able to handle real-time data processing and provide feedback with a delay of less than 1 second between detection and alert. |
-| HRS-08 | The ESP32 module shall enable wireless communication for syncing posture data with a mobile app via Wi-Fi. The module must maintain stable communication over typical room distances (up to 10 meters) and provide data synchronization within 5 seconds of a request from the app. |
+| HRS-08 | The ESP32 module shall enable wireless communication for syncing posture data with a mobile app via Wi-Fi. The module must maintain stable communication over typical room distances (up to 10 meters) and provide data synchronization within 5 seconds of a request from the app.                                                                       |
 
 ### 7. Bill of Materials (BOM)
 
 Sensors:
 
-* US-100 ultrasonic sensor: This will be used to detect the position of the top of the user’s back. It will be connected to the MCU via GPIO.  
-* 5 x Pressure sensors: These will be used to measure the pressure from the lower back of the user. These sensors are Force Sensitive Resistors, so we will use the MCUs ADC Pins to measure the voltage drop across them in order to measure the force applied to them.  
+* US-100 ultrasonic sensor: This will be used to detect the position of the top of the user’s back. It will be connected to the MCU via GPIO.
+* 5 x Pressure sensors: These will be used to measure the pressure from the lower back of the user. These sensors are Force Sensitive Resistors, so we will use the MCUs ADC Pins to measure the voltage drop across them in order to measure the force applied to them.
 * IMU: this will be used to measure the pitch of the seat the user is sitting in. This will communicate with the MCU via I2C
 
 Outputs:
 
-* LCD Display: this will be used to provide a visual indication of any posture issues. This display will be connected to the MCU via SPI.  
-* ESP32 (Feather S2): This device will be used to transmit the measurements to an IoT reciever such as Blynk. It will communicate with the MCU via I2C. This device will be powered by a USB connection (in the real product this would be connected to a battery, but that is not in this design)  
+* LCD Display: this will be used to provide a visual indication of any posture issues. This display will be connected to the MCU via SPI.
+* ESP32 (Feather S2): This device will be used to transmit the measurements to an IoT reciever such as Blynk. It will communicate with the MCU via I2C. This device will be powered by a USB connection (in the real product this would be connected to a battery, but that is not in this design)
 * Piezo Buzzer: this will be used as an additional indication to the user that their posture is poor. This will be connected to the MCU’s GPIO pins with PWM.
 
 Details on pin use and cost of components can be found in the BoM:
@@ -153,17 +163,17 @@ Sprint milestone planning will happen on the Sunday prior to each week. Saanvi a
 
 We will divide up the work first for each subsegment of the project:
 
-* Saanvi will work on getting the Buzzer, LCD and Force/Pressure Sensors working  
-* Aagam will work on the ESP32-S2 feather, Ultrasonic sensor, and the code to handle interrupts working. 
+* Saanvi will work on getting the Buzzer, LCD and Force/Pressure Sensors working
+* Aagam will work on the ESP32-S2 feather, Ultrasonic sensor, and the code to handle interrupts working.
 
 Then as we get closer to the deadline, we will focus on integration. Here, both of us will be working together in lab to combine the individual pieces.
 
-| Milestone  | Functionality Achieved | Distribution of Work |
-| ---------- | ---------------------- | -------------------- |
-| Sprint #1  | Individual components can communicate with Atmega328pb | Saanvi will integrate LCD, Buzzer, force sensor; Aagam the ESP32-S2, ultrasonic sensor, interrupts     |
-| Sprint #2  | All components can perform their function in pieces (with simulated versions of other components in software). Begin integration with only sensors + buzzer for output | Same as sprint #1, but with joint work to integrate          |
-| MVP Demo   | System works with sensors + buzzer + either display or esp32 | Saanvi and Aagam will work jointly on this integration  |
-| Final Demo | Full functionality | Saanvi will add LCD functionality. Aagam and Saanvi will work on packaging the device  |
+| Milestone  | Functionality Achieved                                                                                                                                                 | Distribution of Work                                                                               |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Sprint #1  | Individual components can communicate with Atmega328pb                                                                                                                 | Saanvi will integrate LCD, Buzzer, force sensor; Aagam the ESP32-S2, ultrasonic sensor, interrupts |
+| Sprint #2  | All components can perform their function in pieces (with simulated versions of other components in software). Begin integration with only sensors + buzzer for output | Same as sprint #1, but with joint work to integrate                                                |
+| MVP Demo   | System works with sensors + buzzer + either display or esp32                                                                                                           | Saanvi and Aagam will work jointly on this integration                                             |
+| Final Demo | Full functionality                                                                                                                                                     | Saanvi will add LCD functionality. Aagam and Saanvi will work on packaging the device              |
 
 ## Sprint Review #1
 
@@ -173,11 +183,12 @@ Last week, we ordered parts (are are still waiting on them to become available i
 
 ### Current state of project
 
-Currently, we have the parts we need, and a few components started. The next steps are to begin testing the parts we recieved (especially the force resistors) and get started with integration.
+Currently, we most of the parts we need, and a few components started. The next steps are to begin testing the parts we recieved (especially the force resistors) and get started with integration.
 
 ### Next week's plan
 
 Goals:
+
 - Have I2C driver that can talk to another I2C device (e.g., an IMU) without any device-specific logic
 - Create a blynk setup that can turn mocked signals from the MCU into charts/graphs
   - this should use the same pins we plan to communicate the data via once we integrate the actual hardware
@@ -189,9 +200,41 @@ Out of these 3, both Saanvi and Aagam will work on the first, Aagam will work on
 
 ### Last week's progress
 
+Saanvi finalized the configuration and initialization of all peripheral components connected to the ATmega328PB microcontroller. This included the ADC channels for force sensors & ultrasonic sensor and digital output control for the buzzer and LCD (but did not include imu as we needed the i2c set up first). She began with the timer configurations to support both time-sensitive tasks and future interrupt-driven operations. In addition, Saanvi initiated the development of interrupt service routines (ISRs) for force sensor data acquisition. These routines are designed to handle high-priority posture events by sampling analog pressure values and performing threshold-based detection. The ISR implementation is structured to have 2 pressure sensors on the seat be continually sesning and the rest of the peripherals "sleeping" till weight is detected.
+
+Proof of Work in Github ^ (code - no images here because we've been doing firmware not hardware- now that all parts have arrived we will be doing more sensor testing and wiring to further develop firmware and begin assembling our device)
+
+Aagam - 
+
+Aagam developed and modularized the I2C communication driver to support multi-device coordination between the ATmega328PB and the ESP32-S2 Feather. The driver was written to ensure compatibility with both microcontrollers and to allow flexible integration of additional I2C-based sensors. Parallel to this, Aagam configured the ESP32-S2 Feather to serve as the central wireless node using Blynk for IoT-based remote posture monitoring. Although sensor integration has not yet been completed, the foundational Blynk setup was successfully implemented and validated.
+
+Proof of Work in Github ^ (code - no images here because we've been doing firmware not hardware- now that all parts have arrived we will be doing more sensor testing and wiring to further develop firmware and begin assembling our device)
+
 ### Current state of project
 
+We have mainly worked on our firmware--specifically structuring and setting up our firmware architecture and core peripheral initialization routines. This week we received the remainder of our hardware components. Now we must 1) test all connected peripherals to empirically determine the thresholds and trigger conditions that will define "bad posture" and allow us to distinguish between different types of postural deviations such as slouching vs leaning 2) use these empirical results to finalize and calibrate our ISRs for real-time responsiveness and 3) integrate logic for posture state classification and corresponding feedback mechanisms (e.g. buzzer alerts and LCD messages) into the main control loop. Our firmware’s foundation is now well-developed. The next phase involves refining ISR sequencing to ensure reliable execution order particularly making sure that time-critical sensing from both force sensors is not disrupted by secondary interrupt events. In terms of system integration we will begin testing data flow between the ATmega328PB and the ESP32-S2 via I2C to prepare for wireless telemetry and ensure smooth coordination between posture detection and real-time data transmission.
+
 ### Next week's plan
+
+1. Peripheral Threshold Calibration (3hrs) - Begin experimental testing of the force and pressure sensors under various postural conditions to establish quantitative thresholds for identifying "bad posture." This includes collecting baseline data for normal seating and logging deviations caused by slouching, leaning, or uneven weight distribution. These thresholds will inform both real-time posture classification and ISR logic.
+2. Finalize and Optimize ISR Implementation (2.5 hrs)- Using the results from sensor calibration, finalize the interrupt service routines to ensure they trigger accurately based on posture events. This includes refining the prioritization of ISRs to prevent timing conflicts, particularly ensuring that force sensor sampling occurs with minimal latency and is not interrupted by secondary tasks such as LCD updates or buzzer activation.
+3. Develop Posture Classification Logic (5 hrs)- Implement and test posture classification algorithms in firmware, using sensor data to categorize user posture states. These states will be mapped to specific feedback actions (e.g., gradual buzzer ramp-up, instructional LCD prompts) based on duration and severity of poor posture.
+4. ESP32-S2 & I2C Integration Testing (2.5hrs) - Establish and test communication between the ATmega328PB and ESP32-S2 Feather over I2C. Begin transferring mock posture data to verify the communication pipeline and prepare for integration with Blynk for wireless monitoring. Confirm that the ESP32-S2 can receive, parse, and transmit this data in near-real time.
+5. LCD Display and Buzzer Feedback Routines (2hrs) - Finalize the behavior of the buzzer and LCD display to ensure they provide timely and informative user feedback based on the detected posture state. This includes configuring timer-based routines for buzzer ramping and designing visual feedback sequences for the LCD.
+
+Saanvi will do 1, 2 
+
+Aagam and Saanvi will do 3
+
+Aagam will do 4, 5
+
+Definition of "Done" 
+
+1. Force and pressure sensor data collected for at least 3 distinct posture states. Threshold values documented and verified through repeated tests. Calibration results integrated into posture detection planning
+2. ISRs coded and mapped to correct interrupt vectors. Verified ISR System tested to ensure ISR execution does not interfere with force sensor readings
+3. Logic implemented to classify at least 3 posture types using real-time sensor data. State transitions tested and debugged using live input. Corresponding actions (buzzer/LCD) linked to posture states
+4. Successful I2C communication between ATmega328PB and ESP32-S2. Transmission of mock posture data confirmed. ESP32-S2 verified to send parsed data to Blynk interface
+5. Buzzer responds to posture events with correct timing and intensity. LCD displays clear, context-specific messages. Both peripherals tested together in an integrated feedback cycle
 
 ## MVP Demo
 
