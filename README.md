@@ -179,22 +179,33 @@ Then as we get closer to the deadline, we will focus on integration. Here, both 
 
 ### Last week's progress
 
-Last week, we ordered parts (are are still waiting on them to become available in Detkin lab). We also started work on the IoT component of our project, which uses an ESP32-S2 feather. We also wrote up a more detailed firmware/hardware plan (what pins will be used for what) based on the revised set of parts we used when ordering.
+Last week, we placed orders for all required components and began initial development on the IoT aspect of the project using the ESP32-S2 Feather. While several parts are still pending arrival in the Detkin lab, we moved forward by finalizing the hardware and firmware mapping--including detailed documentation of pin assignments for each peripheral based on the revised parts list. This pinout map will serve as the foundation for consistent firmware development across modules.
 
 ### Current state of project
 
-Currently, we most of the parts we need, and a few components started. The next steps are to begin testing the parts we recieved (especially the force resistors) and get started with integration.
+At present, a few components have arrived, such as the buzzer and the seat cushion, but key parts like the pressure sensors and haptic motor are still in transit. As a result, full hardware integration is delayed. In the meantime, we have shifted focus to the configuration of peripherals that are already available--specifically, initializing the ultrasonic sensor, IMU, and LCD. We’ve begun low-level setup and plan to validate communication protocols, confirm sensor output formatting, and establish basic functionality through test routines. The next steps involve implementing a generic I2C driver, building the firmware backbone, and launching the Blynk-based interface for remote monitoring.
 
 ### Next week's plan
 
 Goals:
 
-- Have I2C driver that can talk to another I2C device (e.g., an IMU) without any device-specific logic
-- Create a blynk setup that can turn mocked signals from the MCU into charts/graphs
-  - this should use the same pins we plan to communicate the data via once we integrate the actual hardware
-- A rough version of the main loop our code will be running with. We will write this and test it with the sensors.
+1. Have I2C driver that can talk to another I2C device (e.g., an IMU) without any device-specific logic (2hrs)
+2. Create a blynk setup that can turn mocked signals from the MCU into charts/graphs (2hrs)
 
-Out of these 3, both Saanvi and Aagam will work on the first, Aagam will work on the second, and Saanvi will work on the third.
+   1. This should use the same pins we plan to communicate the data via once we integrate the actual hardware
+3. Implement foundational firmware structure on the ATmega328PB including clock setup, pin initialization, modular organization to support sensor and actuator integration, ISR template definitions, and overall architecture. This will form the firmware backbone and allow rapid development of individual modules in upcoming sprints (3.5hrs)
+4. A rough version of the main loop our code will be running with. We will write this and test it with the sensors. (30min)
+
+Saanvi will do 3 & 4
+
+Aagam will do 1 & 2
+
+Definition of "Done"
+
+1. Successfully compiles and transmits/receives data with a connected I2C device (e.g., IMU)
+2. Mock data visible in the Blynk app via charts or indicators
+3. Peripheral headers and initialization functions implemented. Clean modular structure in place for integrating future sensor/actuator thresholds
+4. Loop compiles and runs. Able to call placeholder functions for reading sensors and updating actuators
 
 ## Sprint Review #2
 
