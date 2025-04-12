@@ -181,6 +181,8 @@ Then as we get closer to the deadline, we will focus on integration. Here, both 
 
 Last week, we placed orders for all required components and began initial development on the IoT aspect of the project using the ESP32-S2 Feather. While several parts are still pending arrival in the Detkin lab, we moved forward by finalizing the hardware and firmware mapping--including detailed documentation of pin assignments for each peripheral based on the revised parts list. This pinout map will serve as the foundation for consistent firmware development across modules.
 
+![1744429418835](image/README/1744429418835.png)
+
 ### Current state of project
 
 At present, a few components have arrived, such as the buzzer and the seat cushion, but key parts like the pressure sensors and haptic motor are still in transit. As a result, full hardware integration is delayed. In the meantime, we have shifted focus to the configuration of peripherals that are already available--specifically, initializing the ultrasonic sensor, IMU, and LCD. We’ve begun low-level setup and plan to validate communication protocols, confirm sensor output formatting, and establish basic functionality through test routines. The next steps involve implementing a generic I2C driver, building the firmware backbone, and launching the Blynk-based interface for remote monitoring.
