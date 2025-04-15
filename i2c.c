@@ -179,3 +179,17 @@ int i2c_recieve(uint8_t addr, uint8_t* data, int n, bool send_stop, bool is_repe
     
     return 0;
 }
+
+int i2c_write_register_8(uint8_t addr, uint8_t reg, uint8_t data) {
+    uint8_t buf [2] = {reg, data};
+    return i2c_send(addr, buf, 2, true, false);
+}
+
+int i2c_read_register_8(uint8_t addr, uint8_t reg, uint8_t* result) {
+    // first send a byte without stop
+    uint8_t buf [1] = {reg};
+    int status = i2c_send(addr, buf, 1, false, false); // don't send a stop
+    if (status < 0) return status;
+    // then receive the result
+    return i2c_recieve(addr, result, 1, true, true); // read 1 byte into result; is a repeated start
+}

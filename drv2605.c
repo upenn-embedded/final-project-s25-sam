@@ -3,16 +3,11 @@
 #include <stdio.h>
 
 int drv2605_write_register_8(uint8_t reg, uint8_t value) {
-    uint8_t buf [2] = {reg, value};
-    return i2c_send(DRV2605_I2C_ADDR, buf, 2, true, false);
+    return i2c_write_register_8(DRV2605_I2C_ADDR, reg, value);
 }
 
 int drv2605_read_register_8(uint8_t reg, uint8_t* result) {
-    // first send a byte without stop
-    uint8_t buf [1] = {reg};
-    int status = i2c_send(DRV2605_I2C_ADDR, buf, 1, false, false); // don't send a stop
-    if (status < 0) return status;
-    return i2c_recieve(DRV2605_I2C_ADDR, result, 1, true, true); // read 1 byte into result; is a repeated start
+    return i2c_read_register_8(DRV2605_I2C_ADDR, reg, result);
 }
 
 // Initialize DRV2605
