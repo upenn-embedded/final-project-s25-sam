@@ -228,8 +228,9 @@
      BUZZER_DDR |= (1 << BUZZER_PIN);
      BUZZER_PORT &= ~(1 << BUZZER_PIN);
 
-     while (1) {
+     while (1) {         
          if (!sensing_enabled && ++loop_counter >= 50) {
+             
              loop_counter = 0;
              uint16_t s0 = adc_read(0);
              uint16_t s1 = adc_read(1);
@@ -246,6 +247,9 @@
          if (sensing_enabled) {
              send_trigger_pulse();
              _delay_ms(60);
+             
+             uint16_t s0 = adc_read(0);
+             printf("s0 value %d\n", s0);
 
              if (measurementReady) {
                  measurementReady = 0;
@@ -717,21 +721,21 @@ don't start peripheral sensing till first two pressure sensors (p_- & p __ sense
 volatile uint16_t timer_count = 0;
 volatile uint8_t measurementReady = 0;
 
-// Initialize Timer1 in normal mode with 1µs resolution
+// Initialize Timer1 in normal mode with 1Âµs resolution
 void timer1_init() {
     TCCR1A = 0;
-    TCCR1B = (1 << CS11);  // Prescaler = 8 (1 tick = 0.5 µs at 16MHz)
+    TCCR1B = (1 << CS11);  // Prescaler = 8 (1 tick = 0.5 Âµs at 16MHz)
     TIMSK1 = (1 << ICIE1); // Enable input capture interrupt
     //Initialize abc
     TCCR1B |= (1 << ICES1); // Start with Rising Edge
 }
 
-// Send 10µs pulse on TRIG_PIN
+// Send 10Âµs pulse on TRIG_PIN
 void send_trigger_pulse() {
     DDRB |= (1 << TRIG_PIN);  // Set TRIG_PIN as output
     PORTB &= ~(1 << TRIG_PIN); // Ensure it's LOW
     _delay_us(2);
-    PORTB |= (1 << TRIG_PIN);  // Set HIGH for 10µs
+    PORTB |= (1 << TRIG_PIN);  // Set HIGH for 10Âµs
     _delay_us(10);
     PORTB &= ~(1 << TRIG_PIN); // Set LOW again
 }
@@ -744,7 +748,7 @@ ISR(TIMER1_CAPT_vect) {
         start_time = ICR1;  // Store start time
         TCCR1B &= ~(1 << ICES1);  // Switch to falling edge detection
          //  Compute Distance Outside ISR
-            uint16_t duration = timer_count / 2; // Convert to µs (each tick = 0.5µs)
+            uint16_t duration = timer_count / 2; // Convert to Âµs (each tick = 0.5Âµs)
             uint16_t distance = duration / 58;  // Convert to cm
             printf("Distance: ");
             printf("%d", distance);
