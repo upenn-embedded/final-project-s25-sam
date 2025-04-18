@@ -8,10 +8,10 @@
 #include "uart.h"
 #include <stdio.h>
 
-// Define clock and baud rate again in this file for consistency
-#define F_CPU 16000000UL
+#define F_CPU 16000000UL  // ? Match main.c
 #define BAUD 9600
 #define BAUD_PRESCALE (((F_CPU / (BAUD * 16UL))) - 1)
+
 
 static FILE uart_output = FDEV_SETUP_STREAM(uart_putchar, NULL, _FDEV_SETUP_WRITE);
 
