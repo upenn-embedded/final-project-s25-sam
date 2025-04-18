@@ -5,23 +5,6 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>uart.h</itemPath>
-      <itemPath>../FreeRTOS/FreeRTOS.h</itemPath>
-      <itemPath>../FreeRTOS/FreeRTOSBoardDefs.h</itemPath>
-      <itemPath>../FreeRTOS/FreeRTOSConfig.h</itemPath>
-      <itemPath>../FreeRTOS/croutine.h</itemPath>
-      <itemPath>../FreeRTOS/event_groups.h</itemPath>
-      <itemPath>../FreeRTOS/list.h</itemPath>
-      <itemPath>../FreeRTOS/message_buffer.h</itemPath>
-      <itemPath>../FreeRTOS/mpu_wrappers.h</itemPath>
-      <itemPath>../FreeRTOS/portable.h</itemPath>
-      <itemPath>../FreeRTOS/portmacro.h</itemPath>
-      <itemPath>../FreeRTOS/projdefs.h</itemPath>
-      <itemPath>../FreeRTOS/queue.h</itemPath>
-      <itemPath>../FreeRTOS/semphr.h</itemPath>
-      <itemPath>../FreeRTOS/stack_macros.h</itemPath>
-      <itemPath>../FreeRTOS/stream_buffer.h</itemPath>
-      <itemPath>../FreeRTOS/task.h</itemPath>
-      <itemPath>../FreeRTOS/timers.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -32,23 +15,10 @@
                    displayName="Linker Files"
                    projectFiles="true">
     </logicalFolder>
-    <logicalFolder name="f1" displayName="New Folder 1" projectFiles="true">
-    </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>uart.c</itemPath>
-      <itemPath>../FreeRTOS/croutine.c</itemPath>
-      <itemPath>../FreeRTOS/event_groups.c</itemPath>
-      <itemPath>../FreeRTOS/heap_3.c</itemPath>
-      <itemPath>../FreeRTOS/hooks.c</itemPath>
-      <itemPath>../FreeRTOS/library.c</itemPath>
-      <itemPath>../FreeRTOS/list.c</itemPath>
-      <itemPath>../FreeRTOS/port.c</itemPath>
-      <itemPath>../FreeRTOS/queue.c</itemPath>
-      <itemPath>../FreeRTOS/stream_buffer.c</itemPath>
-      <itemPath>../FreeRTOS/tasks.c</itemPath>
-      <itemPath>../FreeRTOS/timers.c</itemPath>
     </logicalFolder>
     <itemPath>main.c</itemPath>
   </logicalFolder>

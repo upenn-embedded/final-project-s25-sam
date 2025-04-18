@@ -43,7 +43,7 @@
  #define BAUD 9600
  #define BAUD_PRESCALE (((F_CPU / (BAUD * 16UL))) - 1)  // Baud rate calculation for UART
  #define TRIG_ECHO_PIN PB1  // Pin used for both triggering and receiving ultrasonic signal
- #define THRESHOLD 500      // Pressure sensor threshold
+ #define THRESHOLD 450      // Pressure sensor threshold
 
 // // === LCD Pin Configuration ===
  #define LCD_RS     PB0
@@ -63,6 +63,10 @@
  #define LCD_EN_DDR  DDRB
  #define LCD_DATA_DDRB DDRB
  #define LCD_DATA_DDRD DDRD
+
+ volatile uint8_t low_pressure_count = 0;
+ volatile uint8_t peripherals_ready = 0;
+
 
 // // === LCD Utility Functions ===
  void lcd_enable_pulse() {
@@ -149,7 +153,7 @@
      TCCR1B |= (1 << ICES1);
  }
 
- // === Timer2: ~10ms tick for 2s logging loop ===
+ // === Timer2: ~10ms tick for 3s logging loop ===
  void timer2_init() {
      TCCR2A = (1 << WGM21);
      TCCR2B = (1 << CS22) | (1 << CS21) | (1 << CS20);
@@ -193,21 +197,33 @@
          TCCR1B |= (1 << ICES1);
      }
  }
+ 
+ volatile uint16_t tick_counter = 0;
+ 
 
 // // === ISR: 2s Sensor Logging ===
  ISR(TIMER2_COMPA_vect) {
-     if (!sensing_enabled) return;
+    tick_counter++;
+    printf("isr");
+    if (tick_counter >= 300) {  // ~3 seconds
+ 
 
-     static uint16_t tick_counter = 0;
-     tick_counter++;
+        uint16_t s0 = adc_read(0);
 
-     if (tick_counter >= 200) {
-         tick_counter = 0;
-         uint16_t s2 = adc_read(2);
-         uint16_t s3 = adc_read(3);
-         printf("PC2 (ADC2): %u\tPC3 (ADC3): %u\n", s2, s3);
-     }
- }
+        if (s0 < THRESHOLD) {
+            low_pressure_count++;
+        } else {
+            low_pressure_count = 0;  // reset if a reading is above threshold
+        }
+
+        if (low_pressure_count >= 5 && !peripherals_ready) {
+            peripherals_ready = 1;
+            printf("peripherals begin sensing\n");
+        }
+        
+        tick_counter = 0;
+    }
+}
 
 // // === Main Function ===
  int main() {
@@ -238,11 +254,12 @@
 
              printf("s0 value %d", s0);
                      
-             if (s0 > THRESHOLD && s1 > THRESHOLD) {
+             if (s0 > THRESHOLD) {
                  sensing_enabled = 1;
                  printf("Initial pressure detected ? enabling sensors\n");
              }
          }
+         // && s1 > THRESHOLD
 
          if (sensing_enabled) {
              send_trigger_pulse();
