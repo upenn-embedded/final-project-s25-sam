@@ -254,6 +254,9 @@ Definition of "Done"
 1. Show a system block diagram & explain the hardware implementation.
 2. Explain your firmware implementation, including application logic and critical drivers you've written.
 3. Demo your device.
+
+(Done in lab)
+
 4. Have you achieved some or all of your Software Requirements Specification (SRS)?
 
    1. Show how you collected data and the outcomes.
