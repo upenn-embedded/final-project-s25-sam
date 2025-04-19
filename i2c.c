@@ -65,13 +65,13 @@ int i2c_send(uint8_t addr, uint8_t* data, int n, bool send_stop, bool is_repeate
     // noting that the 0 values help signal this is
     // a master transmitter setup
     TWCR1 = START;
-    printf("STARTING WRITE\n\r");
-    printf("waiting for start sent\n\r");
+    // printf("STARTING WRITE\n\r");
+    // printf("waiting for start sent\n\r");
     while (!(TWCR1 & (1 << TWINT))); // wait for TWINT to be set
-    printf("done waiting for start sent\n\r");
+    // printf("done waiting for start sent\n\r");
     
-    printf("checking status of start\n\r");
-    printf("got TWSR of %d\n\r", TWSR1);
+    // printf("checking status of start\n\r");
+    // printf("got TWSR of %d\n\r", TWSR1);
     
     uint8_t expected_status = is_repeated_start ? REPEATED_START : START_DONE;
     if ((TWSR1 & TWSR_BIT_MASK) != expected_status) {
@@ -84,17 +84,17 @@ int i2c_send(uint8_t addr, uint8_t* data, int n, bool send_stop, bool is_repeate
     TWCR1   = (1 << TWINT) | (1 << TWEN);
 
     // interrupt flag is
-    printf("waiting for addr sent\n\r");
+    // printf("waiting for addr sent\n\r");
     while (!(TWCR1 & (1<<TWINT)));
-    printf("addr done sending\n\r");
+    // printf("addr done sending\n\r");
 
     // Wait for an ack
-    printf("waiting for ack of addr\n\r");
+    // printf("waiting for ack of addr\n\r");
     if ((TWSR1 & TWSR_BIT_MASK) != MT_SLA_ACK) {
         printf("nack of addr recieved :( TWSR1 0x%x\n\r", TWSR1 & TWSR_BIT_MASK);
         return -2;
     }
-    printf("ack of addr recieved\n\r");
+    // printf("ack of addr recieved\n\r");
     
     for (int i = 0; i < n; i++) {
         TWDR1 = data[i];
@@ -105,7 +105,7 @@ int i2c_send(uint8_t addr, uint8_t* data, int n, bool send_stop, bool is_repeate
             printf("nack of data[%d] received :( TWSR1 0x%x\n\r", i, TWSR1 & TWSR_BIT_MASK);
             return -3;
         }
-        printf("ack of data[%d] (value: %x) received TWSR1\n\r", i, data[i]);
+        // printf("ack of data[%d] (value: %x) received TWSR1\n\r", i, data[i]);
     }
     
     // stop transmission
@@ -120,13 +120,13 @@ int i2c_send(uint8_t addr, uint8_t* data, int n, bool send_stop, bool is_repeate
 int i2c_recieve(uint8_t addr, uint8_t* data, int n, bool send_stop, bool is_repeated_start) {    
     TWCR1 = START;
     
-    printf("STARTING READ\n\r");
-    printf("waiting for start sent\n\r");
+    // printf("STARTING READ\n\r");
+    // printf("waiting for start sent\n\r");
     while (!(TWCR1 & (1 << TWINT))); // wait for TWINT to be set
-    printf("done waiting for start sent\n\r");
+    // printf("done waiting for start sent\n\r");
     
-    printf("checking status of start\n\r");
-    printf("got TWSR of %d\n\r", TWSR1);
+    // printf("checking status of start\n\r");
+    // // printf("got TWSR of %d\n\r", TWSR1);
     uint8_t expected_status = is_repeated_start ? REPEATED_START : START_DONE;
     if ((TWSR1 & TWSR_BIT_MASK) != expected_status) {
         return -1;
@@ -136,9 +136,9 @@ int i2c_recieve(uint8_t addr, uint8_t* data, int n, bool send_stop, bool is_repe
     // clear the TWINT bit
     TWCR1 = (1 << TWINT) | (1 << TWEN);
 
-    printf("waiting for addr sent\n\r");
+    // printf("waiting for addr sent\n\r");
     while (!(TWCR1 & (1<<TWINT)));
-    printf("addr done sending\n\r");
+    // printf("addr done sending\n\r");
 
     // Wait for an ack
     printf("waiting for ack of addr\n\r");
@@ -146,7 +146,7 @@ int i2c_recieve(uint8_t addr, uint8_t* data, int n, bool send_stop, bool is_repe
         printf("nack of addr recieved :( TWSR1 0x%x\n\r", TWSR1 & TWSR_BIT_MASK);
         return -2;
     }
-    printf("ack of addr recieved\n\r");
+    // printf("ack of addr recieved\n\r");
     
     for (int i = 0; i < n; i++) {
         uint8_t expected_status;
@@ -163,12 +163,12 @@ int i2c_recieve(uint8_t addr, uint8_t* data, int n, bool send_stop, bool is_repe
         while (!(TWCR1 & (1 << TWINT)));
         
         if ((TWSR1 & TWSR_BIT_MASK) != expected_status) {
-            printf("unexpected status for data[%d] received :( TWSR1 0x%x\n\r", i, TWSR1 & TWSR_BIT_MASK);
+            // printf("unexpected status for data[%d] received :( TWSR1 0x%x\n\r", i, TWSR1 & TWSR_BIT_MASK);
             return -3;
         }
         
         data[i] = TWDR1;
-        printf("appropriate status for read; set data[%d] received TWSR1, data %d\n\r", i, TWDR1);
+        // printf("appropriate status for read; set data[%d] received TWSR1, data %d\n\r", i, TWDR1);
     }
     
     // stop transmission
