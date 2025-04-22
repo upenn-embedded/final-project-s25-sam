@@ -46,15 +46,6 @@ volatile uint8_t bad_posture = 1;
 // === Additional Globals ===
 volatile uint16_t timer_count = 0;       // Captured echo duration
 
-// === Timer1: Ultrasonic Sensor Echo Capture Setup ===
-void
-timer1_init() {
-    TCCR1A = 0;               // Normal mode
-    TCCR1B = (1 << CS11);     // Prescaler = 8
-    TIMSK1 = (1 << ICIE1);    // Enable input capture interrupt
-    TCCR1B |= (1 << ICES1);   // First look for rising edge
-}
-
 // === Timer2: Set for ~160ms, use ISR to count to 3s ===
 void
 timer2_init() {
@@ -149,18 +140,6 @@ uint16_t echo_to_cm(uint16_t echo_ticks) {
     return cm;
 }
 
-// ISR(TIMER1_CAPT_vect) {
-//     static uint16_t start_time = 0;
-//     if (TCCR1B & (1 << ICES1)) {  // Rising edge
-//         start_time = ICR1;        // Capture start time
-//         TCCR1B &= ~(1 << ICES1);  // Now look for falling edge
-//     } else {  // Falling edge
-//         timer_count = ICR1 - start_time;  // Measure pulse width
-//         measurementReady = 1;             // Mark measurement complete
-//         TCCR1B |= (1 << ICES1);           // Reset for rising edge
-//     }
-// }
-
 volatile uint16_t tick_counter = 0; // each tick is 10ms
 
 
@@ -226,7 +205,6 @@ int
 main() {
     uart_init();     // Serial print support
     adc_init();      // Set up ADC
-    timer1_init();   // Ultrasonic input capture timer
     timer2_init();   // 10ms tick -> 3s ISR logic
     init_ultrasonic();
     i2c_init();
@@ -239,7 +217,6 @@ main() {
     init_pressure_thresholds();   // this takes some time
 
     printf("Thresholds: %u %u %u %u\n", s0_threshold, s1_threshold, s2_threshold, s3_threshold);
-    
     
     sei();           // Enable global interrupts
 
