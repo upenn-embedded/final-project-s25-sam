@@ -21,7 +21,6 @@ drv2605_init(void) {
     status = drv2605_write_register_8(DRV2605_REG_MODE, 0x80);   // Set reset bit
     if (status != 0)
         return status;
-    _delay_ms(10);   // Wait for reset to complete
 
     // set the device to standby mode first
     status = drv2605_write_register_8(DRV2605_REG_MODE, 0x40);   // Standby
