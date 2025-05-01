@@ -27,15 +27,15 @@ VIDEO
 
 *Include photos of your device from a few angles. If you have a casework, show both the exterior and interior (where the good EE bits are!).*
 
-![1746059356053](image/README/1746059356053.png)
+![1746059356053](assets/image/README/1746059356053.png)
 
-![1746059308131](image/README/1746059308131.png)
+![1746059308131](assets/image/README/1746059308131.png)
 
-![1746059910849](image/README/1746059910849.jpg)
+![1746059910849](assets/image/README/1746059910849.jpg)
 
-![1746059547678](image/README/1746059547678.jpg)
+![1746059547678](assets/image/README/1746059547678.jpg)
 
-![1746059693674](image/README/1746059693674.jpg)
+![1746059693674](assets/image/README/1746059693674.jpg)
 
 ### 3. Results
 
