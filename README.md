@@ -6,7 +6,7 @@
 * Team Name: Sam
 * Team Members: Saanvi Mehta, Aagam Dalal saanvimmehta
 * GitHub Repository URL: https://github.com/upenn-embedded/final-project-s25-sam
-* GitHub Pages Website URL: [ for final submission]
+* GitHub Pages Website URL: https://upenn-embedded.github.io/final-project-s25-sam/
 
 ## Final Project Proposal
 
