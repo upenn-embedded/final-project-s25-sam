@@ -12,20 +12,9 @@ layout: default
 
 ### 1. Video
 
-**https://www.dropbox.com/scl/fo/702uyo3b11zsc03u807cp/AIPMQNEChR5ZowI8P7IOuxo?rlkey=1u3yia7crl2wny4mzd332s2i4&st=c8gdctuw&dl=0**
-
-VIDEO
-
-* The video must demonstrate your key functionality.
-* The video must be 5 minutes or less.
-* Ensure your video link is accessible to the teaching team. Unlisted YouTube videos or Google Drive uploads with SEAS account access work well.
-* Points will be removed if the audio quality is poor - say, if you filmed your video in a noisy electrical engineering lab.
+**<https://www.dropbox.com/scl/fo/702uyo3b11zsc03u807cp/AIPMQNEChR5ZowI8P7IOuxo?rlkey=1u3yia7crl2wny4mzd332s2i4&st=c8gdctuw&dl=0>**
 
 ### 2. Images
-
-[Insert final project images here]
-
-*Include photos of your device from a few angles. If you have a casework, show both the exterior and interior (where the good EE bits are!).*
 
 ![1746059356053](assets/image/README/1746059356053.png)
 
@@ -49,10 +38,6 @@ Our final solution, SlouchBuster, is a real-time posture correction cushion that
 
 **NOTE: our main.c final version is "final_main.c"**
 
-*Did your requirements change? If so, why? Failing to meet a requirement is acceptable; understanding the reason why is critical!*
-
-*Validate at least two requirements, showing how you tested and your proof of work (videos, images, logic analyzer/oscilloscope captures, etc.).*
-
 **VALIDATION FOR SRS-01, 02, 03, 05, & 07 is in pictures and videos of serial monitor prints & the lcd screen changes in the validation folder in this link:** https://www.dropbox.com/scl/fo/702uyo3b11zsc03u807cp/AIPMQNEChR5ZowI8P7IOuxo?rlkey=1u3yia7crl2wny4mzd332s2i4&st=t1vhbi3w&dl=0
 
 | ID             | Description                                                                                                                                                                                                                                                                                                 | Validation Outcome                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -74,10 +59,6 @@ Our final solution, SlouchBuster, is a real-time posture correction cushion that
 
 *Based on your quantified system performance, comment on how you achieved or fell short of your expected requirements.*
 
-*Did your requirements change? If so, why? Failing to meet a requirement is acceptable; understanding the reason why is critical!*
-
-*Validate at least two requirements, showing how you tested and your proof of work (videos, images, logic analyzer/oscilloscope captures, etc.).*
-
 **VALIDATION FOR HRS-01, 02, 05, 06,  & 07 (and partially 08 & 03) is in pictures and videos of serial monitor prints, the lcd screen changes, the system as a whole, the imu and pressure sensors, and the esp32 module in the validation folder in this link:** https://www.dropbox.com/scl/fo/702uyo3b11zsc03u807cp/AIPMQNEChR5ZowI8P7IOuxo?rlkey=1u3yia7crl2wny4mzd332s2i4&st=t1vhbi3w&dl=0
 
 | ID     | Description                                                                                                                                                                                                                                                                                                                        | Validation Outcome                                                                                                                                                                                                                                                                                                                                                                                  |
@@ -93,17 +74,6 @@ Our final solution, SlouchBuster, is a real-time posture correction cushion that
 
 ### 4. Conclusion
 
-Reflect on your project. Some questions to address:
-
-* What did you learn from it?
-* What went well?
-* What accomplishments are you proud of?
-* What did you learn/gain from this experience?
-* Did you have to change your approach?
-* What could have been done differently?
-* Did you encounter obstacles that you didn’t anticipate?
-* What could be a next step for this project?
-
 This project was a comprehensive and rewarding experience that pushed us to apply embedded systems concepts to a real-world health-related use case. Through designing and implementing SlouchBuster, we learned how to integrate multiple sensors and peripherals ()including an IMU, ultrasonic sensor, LCD, pressure sensors, and a haptic motor) into a cohesive and responsive system. One of the biggest successes of our project was that every peripheral we planned to integrate in our project we were able to integrate at some level and get to work reliably / contribute in some manner to our overall device: the LCD displayed real-time posture feedback, the IMU helped detect tilting, seat pressure sensor accurately detected if someone was sitting, back pressure sensors provided an accurate assesment of if there was weight on the different parts of the back, the ultrasonic sensor supported distance-based classification, and the haptic motor provided immediate and ergonomic user alerts. We're especially proud of achieving full system integration and real-time posture tracking, only doing peripheral sensing when necessary, having quick response times, & getting unreliable pressure sensors to be reliable by doing calibration of thresholds in the beginning. We're also proud of implementing wireless data logging to an online dashboard via the ESP32.
 
 Throughout the project, we encountered several unexpected challenges, seemingly at every step of the way, we really with working with our pressure sensors which had a steep learning curve as they weren't very accurate & were working consistently but in a way that was opposite of what was expected. Then at our integration steps we were running into accuracy errors with our ultrasonic sensor and imu despite them working independently. We had to move away from software delay assumptions and carefully manage ISR-driven logic to get consistent performance. We also discovered that physical wiring and mechanical layout played a much larger role in system stability than we gave it credit for earlier on, especially as components shifted during testing. In response, we adapted our approach by repositioning components for reliability and focusing more on live serial debugging to isolate logic issues.
@@ -114,6 +84,4 @@ Looking forward, there are several meaningful next steps. We could further refin
 
 ## References
 
-Fill in your references here as you work on your final project. Describe any libraries used here.
-
-n/a
+LCD Library from Lab 4
