@@ -1,6 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/WXeqVgks)
 
-# final-project-skeleton
+# ESE 3500 Final Project: Slouchbuster
 
 * Team Number: 16
 * Team Name: Sam
@@ -421,7 +421,7 @@ Reflect on your project. Some questions to address:
 * Did you encounter obstacles that you didn’t anticipate?
 * What could be a next step for this project?
 
-This project was a comprehensive and rewarding experience that pushed us to apply embedded systems concepts to a real-world health-related use case. Through designing and implementing SlouchBuster, we learned how to integrate multiple sensors and peripherals ()including an IMU, ultrasonic sensor, LCD, pressure sensors, and a haptic motor) into a cohesive and responsive system. One of the biggest successes of our project was that every peripheral we planned to integrate in our project we were able to integrate at some level and get to work reliably / contribute in some manner to our overall device: the LCD displayed real-time posture feedback, the IMU helped detect tilting, seat pressure sensor accurately detected if someone was sitting, back pressure sensors provided an accurate assesment of if there was weight on the different parts of the back, the ultrasonic sensor supported distance-based classification, and the haptic motor provided immediate and ergonomic user alerts. We're especially proud of achieving full system integration and real-time posture tracking, only doing peripheral sensing when necessary, having quick response times, & getting unreliable pressure sensors to be reliable by doing calibration of thresholds in the beginning. We're also proud of implementing wireless data logging to an online dashboard via the ESP32.
+This project was a comprehensive and rewarding experience that pushed us to apply embedded systems concepts to a real-world health-related use case. Through designing and implementing SlouchBuster, we learned how to integrate multiple sensors and peripherals (including an IMU, ultrasonic sensor, LCD, pressure sensors, and a haptic motor) into a cohesive and responsive system. One of the biggest successes of our project was that every peripheral we planned to integrate in our project we were able to integrate at some level and get to work reliably / contribute in some manner to our overall device: the LCD displayed real-time posture feedback, the IMU helped detect tilting, seat pressure sensor accurately detected if someone was sitting, back pressure sensors provided an accurate assesment of if there was weight on the different parts of the back, the ultrasonic sensor supported distance-based classification, and the haptic motor provided immediate and ergonomic user alerts. We're especially proud of achieving full system integration and real-time posture tracking, only doing peripheral sensing when necessary, having quick response times, & getting unreliable pressure sensors to be reliable by doing calibration of thresholds in the beginning. We're also proud of implementing wireless data logging to an online dashboard via the ESP32.
 
 Throughout the project, we encountered several unexpected challenges, seemingly at every step of the way, we really with working with our pressure sensors which had a steep learning curve as they weren't very accurate & were working consistently but in a way that was opposite of what was expected. Then at our integration steps we were running into accuracy errors with our ultrasonic sensor and imu despite them working independently. We had to move away from software delay assumptions and carefully manage ISR-driven logic to get consistent performance. We also discovered that physical wiring and mechanical layout played a much larger role in system stability than we gave it credit for earlier on, especially as components shifted during testing. In response, we adapted our approach by repositioning components for reliability and focusing more on live serial debugging to isolate logic issues.
 
@@ -431,6 +431,4 @@ Looking forward, there are several meaningful next steps. We could further refin
 
 ## References
 
-Fill in your references here as you work on your final project. Describe any libraries used here.
-
-n/a
+LCD Library from Lab 4
