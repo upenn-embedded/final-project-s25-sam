@@ -350,7 +350,6 @@ VIDEO
 
 ![1746059910849](image/README/1746059910849.jpg)
 
-
 ![1746059547678](image/README/1746059547678.jpg)
 
 ![1746059693674](image/README/1746059693674.jpg)
@@ -391,8 +390,6 @@ Our final solution, SlouchBuster, is a real-time posture correction cushion that
 *Did your requirements change? If so, why? Failing to meet a requirement is acceptable; understanding the reason why is critical!*
 
 *Validate at least two requirements, showing how you tested and your proof of work (videos, images, logic analyzer/oscilloscope captures, etc.).*
-
-**MVP**:HRS-08**MVP**: We did not implement IoT for the MVP.
 
 | ID     | Description                                                                                                                                                                                                                                                                                                                        | Validation Outcome                                                                                                                                                                                                                                                                                                                                                                                  |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
